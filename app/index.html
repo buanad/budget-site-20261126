@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HouseLedger — Household Budget</title>
+<meta name="description" content="HouseLedger is the Alvarez family's household budget: income, spending, budgets, savings goals, bills and reports, all in one place.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true">$</span>
+      <span class="brand-name">HouseLedger</span>
+      <span class="brand-tag">the family budget book</span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#/" data-nav="dashboard">Dashboard</a>
+      <a href="#/transactions" data-nav="transactions">Transactions</a>
+      <a href="#/budgets" data-nav="budgets">Budgets</a>
+      <a href="#/goals" data-nav="goals">Savings goals</a>
+      <a href="#/bills" data-nav="bills">Bills</a>
+      <a href="#/reports" data-nav="reports">Reports</a>
+    </nav>
+    <div class="header-month">
+      <span class="month-label">November 2026</span>
+      <span class="month-note">Alvarez household · 4 people</span>
+    </div>
+  </div>
+</header>
+<main id="view" class="wrap" aria-live="polite"></main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p><strong>HouseLedger</strong> — a household budget that lives entirely on this device. Your figures are saved in this browser only; nothing is sent anywhere.</p>
+    <p class="footer-links">
+      <a href="#/">Dashboard</a> · <a href="#/transactions">Transactions</a> · <a href="#/budgets">Budgets</a> · <a href="#/goals">Savings goals</a> · <a href="#/bills">Bills</a> · <a href="#/reports">Reports</a>
+    </p>
+    <p class="footer-small">Seed data covers November 2026 for the Alvarez family. Add, edit or delete anything — totals, charts and budgets update at once. Use “Reset demo data” on the Dashboard to start over.</p>
+  </div>
+</footer>
+<script src="data.js"></script>
+<script src="store.js"></script>
+<script src="charts.js"></script>
+<script src="views.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
