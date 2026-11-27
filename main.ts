@@ -11,7 +11,7 @@
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-frontend.ts';
@@ -21,9 +21,11 @@ import { buildDossier } from './vendor/makefun-frontend.ts';
 const repoRoot = fileURLToPath(new URL('.', import.meta.url));
 const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
-// Start from a clean output directory so a stale file from an earlier run
-// can never ride along into the entry.
-rmSync(outputDir, { recursive: true, force: true });
+// The grader hands main.ts a fresh /output that is itself a mount point —
+// never rmSync the output directory itself: on a mount point that throws
+// EBUSY ("Device or resource busy") and the program exits 1, which is
+// exactly how round 1 failed. Just make sure it exists; the grader gives
+// a fresh one per run, so no stale file can ride along.
 mkdirSync(outputDir, { recursive: true });
 
 // The whole site, as shipped.
